@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+	<%= stylesheet_link_tag    "application" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+<!--- NAVIGATION BAR enable for users only-->
+<!-- 	<div class="navbar">
+		<div class="navbar-inner">
+			<div class="container">
+				<ul class="nav">
+					<li><a href="/">Home</a></li>
+					<li><a href="/about">About</a></li>
+				</ul>
+			</div>
+		</div>
+	</div> -->
+<!--- Content -->
+	<div class="container">
+		<% if !flash[:notice].blank? %>
+			<div class="row">
+				<div class="notice">
+					<div class="span4 offset3">
+						<div class="alert alert-success">
+							<%= flash[:notice] %>						
+						</div>
+					</div>
+				</div>
+			</div>
+		<% end %>
+
+
+		<%= yield %>
+
+	</div>
+	<div class="footer">
+	</div>
+</body>
+</html>
