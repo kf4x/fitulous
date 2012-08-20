@@ -11,7 +11,10 @@
 
 <body>
 <!--- NAVIGATION BAR enable for users only-->
-<!-- 	<div class="navbar">
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log out", logout_path %>
+	<div class="navbar">
 		<div class="navbar-inner">
 			<div class="container">
 				<ul class="nav">
@@ -20,7 +23,11 @@
 				</ul>
 			</div>
 		</div>
-	</div> -->
+	</div>
+<% else %>
+  <%= link_to "Sign up", root_path %> or
+  <%= link_to "log in", login_path %>.
+<% end %>
 <!--- Content -->
 	<div class="container">
 		<% if !flash[:notice].blank? %>
