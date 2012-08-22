@@ -1,52 +1,65 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Home</title>
-	<%= stylesheet_link_tag    "application" %>
-	<%= javascript_include_tag "application" %>
-	<%= csrf_meta_tags %>
-	<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
-
-</head>
-
-<body>
-<!--- NAVIGATION BAR enable for users only-->
-<% if current_user %>
-  Logged in as <%= current_user.email %>.
-  <%= link_to "Log out", logout_path %>
-	<div class="navbar">
-		<div class="navbar-inner">
-			<div class="container">
-				<ul class="nav">
-					<li><a href="/">Home</a></li>
-					<li><a href="/about">About</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-<% else %>
-  <%= link_to "Sign up", root_path %> or
-  <%= link_to "log in", login_path %>.
-<% end %>
-<!--- Content -->
-	<div class="container">
-		<% if !flash[:notice].blank? %>
-			<div class="row">
-				<div class="notice">
-					<div class="span4 offset3">
-						<div class="alert alert-success">
-							<%= flash[:notice] %>						
-						</div>
-					</div>
+    
+    <head>
+        <title>Home</title>
+        <%=stylesheet_link_tag "application" %>
+        <%=javascript_include_tag "application" %>
+        <%=csrf_meta_tags %>
+        <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+    </head>
+    
+    <body>
+          <!--- Content -->
+         <div class="container">
+	        <!--- NAVIGATION BAR enable for users only-->
+	        <% if current_user %>
+	            <div class="navbar">
+	                <div class="navbar-inner">
+	                    <div class="container">
+	                        <ul class="nav">
+	                            <li>
+	                                <a href="/">Home</a>
+	                            </li>
+	                            <li>
+	                                <a href="/about">About</a>
+	                            </li>
+	                        </ul>
+	                        <ul class="nav pull-right">
+	                            <li class="dropdown">
+	                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+									<%= current_user.username %><b class="caret"></b></a>
+	                                <ul class=" nav-stacked dropdown-menu">
+	                                    <li>
+	                                        <a href="#"><%= "You have " + pluralize(current_user.plans.size, 'plan') %></a>
+	                                    </li>
+										<li><%= link_to "Plan panel", plans_path %></li>
+	                                    <hr/>
+	                                    <li>
+	                                        <%=link_to "Log out", logout_path %>
+	                                    </li>
+	                                </ul>
+	                        </ul>
+	                    </div>
+	                </div>
+	            </div>
+	            <% end %>
+             <% if !flash[:notice].blank? %>
+                 <div class="row">
+                     <div class="notice">
+                         <div class="span4">
+                             <div class="alert">
+								<button type="button" class="close" data-dismiss="alert">×</button>
+                                 <%=flash[:notice] %>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <% end %>
+				<div id="main">
+					<%= yield %>
 				</div>
-			</div>
-		<% end %>
+         </div>
+    </body>
 
-
-		<%= yield %>
-
-	</div>
-	<div class="footer">
-	</div>
-</body>
 </html>
