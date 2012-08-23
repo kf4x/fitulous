@@ -7,6 +7,8 @@
         <%=javascript_include_tag "application" %>
         <%=csrf_meta_tags %>
         <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.1/prototype.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.3/scriptaculous.js?load=effects,slider"></script>
     </head>
     
     <body>
@@ -30,9 +32,9 @@
 	                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 									<%= current_user.username %><b class="caret"></b></a>
 	                                <ul class=" nav-stacked dropdown-menu">
-	                                    <li>
-	                                        <a href="#"><%= "You have " + pluralize(current_user.plans.size, 'plan') %></a>
-	                                    </li>
+										<li class="user">
+											<a href="/users/<%= current_user.id %>"><div class="content"><div> <%= image_tag avatar_url(current_user,32), :class => 'avatar' %> <b><%= current_user.username.capitalize %></b> <small style="font-size:10px;">View Profile</small></div></div></a>
+										</li>
 										<li><%= link_to "Plan panel", plans_path %></li>
 	                                    <hr/>
 	                                    <li>
