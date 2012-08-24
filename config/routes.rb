@@ -5,6 +5,8 @@ get "signup" => "users#new", :as => "signup"
 resources :users
 resources :sessions
 resources :plans
+resources :exercises
+# match 'plans/:id/exercises/:exercise_id/editp_exercise' => 'exercises#edit_plan_exercise', :as => :edit_plan_exercise
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
