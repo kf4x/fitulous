@@ -1,0 +1,11 @@
+<% if @plan.errors.any? %>
+	<div class="alert alert-error">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		<h2>Oh shoot! There's <%= pluralize(@plan.errors.size, "error") %></h2>
+		<% @plan.errors.full_messages.each do |m| %>
+		<ul>
+			<li><%= m %></li>
+		</ul>
+		<% end %>
+	</div>
+<% end %>

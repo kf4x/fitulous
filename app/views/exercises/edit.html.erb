@@ -1,0 +1,20 @@
+<h1 id="new_exe">Add exercise</h1>
+<%= form_for @exercise do |f| -%>
+<% if @exercise.errors.any? %>
+	<div class="alert alert-error">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+		<h2>Oh shoot! There's <%= pluralize(@exercise.errors.size, "error") %></h2>
+		<% @exercise.errors.full_messages.each do |m| %>
+		<ul>
+			<li><%= m %></li>
+		</ul>
+		<% end %>
+	</div>
+<% end %>
+
+<div class="row">
+	<div class="span4 offset3">
+	<%= f.text_field :name, :placeholder => 'Name of exercise' %>
+	<%= f.text_field :worked, :placeholder => 'What is the exercise working', :size => "5x4" %>
+	<div class="row"><div class="span4"><%= f.submit "Submit" %></div></div>
+<% end -%>

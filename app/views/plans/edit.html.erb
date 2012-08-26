@@ -1,0 +1,9 @@
+<h1 id="new_plan">New Plan</h1>
+<%= render 'error' %>
+<%= form_for @plan, :html => {:multipart => true} do |f| -%>
+<div class="row">
+	<div class="span4 offset3">
+	<%= f.text_field :title, :placeholder => 'Title' %>
+	<%= f.select :sport, ["Strength"] %>
+	<div class="row"><div class="span4"><%= f.submit "Submit" %></div></div>
+<% end -%>

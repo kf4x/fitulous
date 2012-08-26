@@ -1,0 +1,14 @@
+<h1><%= @plan.title %></h1>
+<%= @plan.sport %><br/>
+<br/>
+<% @plan.exercises.each do |exer| %>
+<ul id="plan_list">
+	<li><%= exer.worked %> | <%= exer.name %> | <i class="icon-pencil"></i><%= link_to "Edit exercise" %></li>
+</ul>
+<% end %>
+<%= link_to "Add new exercise", new_exercise_path,  :id => "add_exercise" %>
+
+<br/>
+Created on: <%= @plan.created_at.to_s :datehelper %>
+<br/>
+<p><%= link_to "This User", user_path(@plan.user_id) %></p>

@@ -1,0 +1,18 @@
+<h1>Plan Panel</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<table class="table" id="table">
+			<thead><tr><th>Your workout plans...</th></tr></thead>
+			<% @plans.each	do |plan| %>
+			<tr id="plan<%= plan.id %>">
+				<td><%= link_to plan.title, plan %></td><td><%= plan.sport %></td>
+				<td><i class="icon-pencil"></i><%= link_to "Edit", edit_plan_path(plan) %></td><td><i class="icon-remove"></i><%= link_to "Delete", plan, :method => :delete, :confirm => 'Are you sure?', :data_remote => "true"  %></td>
+			</tr>
+			<% end %>
+			<tr>
+				<td><i class="icon-plus"></i><%= link_to "New plan", new_plan_path %></i></td>
+			</tr>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,7 @@
+<h1 id="user"><%= @user.username %></h1>
+
+		<a href="/users/<%= current_user.id %>/edit"><div class="btn pull-right"><b>Edit your profile</b>
+		</div></a>
+<br>
+<hr>
+<%= image_tag avatar_url(current_user,200), :class => 'avatar' %>

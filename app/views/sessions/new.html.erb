@@ -1,0 +1,25 @@
+<h1>Login</h1>
+<div class="form-horizontal">
+<%= form_tag sessions_path do %>
+  <div class="control-group">
+	<label class="control-label" >Username</label>
+	<div class="controls">
+    <%= text_field_tag :username, params[:username], :placeholder => 'Username'%>
+	</div>
+  </div>
+  <div class="control-group">
+	<label class="control-label">Password</label>
+	<div class="controls">
+    <%= password_field_tag :password %>
+	</div>
+  </div>
+  <div class="control-group">
+	<div class="controls">
+      <label class="checkbox">
+ 		Remember me <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+      </label>
+	</div>
+  </div>
+  <button type="submit" class="btn">Sign in</button>
+<% end %>
+</div>
