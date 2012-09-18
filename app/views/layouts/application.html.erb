@@ -43,11 +43,14 @@
 	                    </div>
 	                </div>
 	            </div>
-	            <% end %>
-
 				<div id="main">
 					<%= yield %>
 				</div>
+				<% else %>
+					<%= yield %>
+	            <% end %>
+
+
          </div>
     </body>
 
